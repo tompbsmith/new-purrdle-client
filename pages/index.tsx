@@ -196,9 +196,14 @@ const Index = (props: any) => {
   const [showRules, setShowRules] = useState<boolean>(false)
   const [showWin, setShowWin] = useState<boolean>(false)
   const [showLose, setShowLose] = useState<boolean>(false)
+  const [showLaura, setShowLaura] = useState<boolean>(false)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
+
+  //set laura card
+  const windowUrl = window.location.search;
+  console.log("windowUrl: " + windowUrl);
 
   return (
     <div>
