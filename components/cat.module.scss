@@ -1,8 +1,16 @@
+$breakpoint-sm: 767px;
+$breakpoint-md: 991px;
+$breakpoint-xs: 575px;
+
 .cat {
     width: 100%;
     margin-bottom: 10px;
 
     border: 1px solid black;
 
-    height: 400px;
+    height: 300px;
+
+    @media (min-width: $breakpoint-md) {
+        height: 400px;
+    }
 }

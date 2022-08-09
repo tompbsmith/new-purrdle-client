@@ -44,7 +44,7 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
                 {turnNumber < 5 ?
                     <>
                         <input type="text" className={styles.input} value={currentGuess} onChange={event => setCurrentGuess(event.target.value)} />
-                        <button className={styles.button} onClick={() => takeTurn(currentGuess)}>Guess <FontAwesomeIcon icon={faPaw} /></button>
+                        <button className={styles.button} onClick={() => { takeTurn(currentGuess); }}>Guess <FontAwesomeIcon icon={faPaw} /></button>
                     </> :
                     <></>}
 

@@ -104,12 +104,14 @@ const Index = (props: any) => {
 
     if (currentGuess.toLowerCase() === cat.name.toLowerCase().trim()) {
       localStorage.setItem("win", "true");
+      window.scrollTo(0, 0);
       setShowWin(true)
       return;
     }
 
     if (turnNumber == 4) {
       localStorage.setItem("lose", "true");
+      window.scrollTo(0, 0);
       setShowLose(true);
       return;
     }
