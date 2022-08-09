@@ -1,7 +1,6 @@
 import styles from './guesses.module.scss';
 
 import React, { useState } from 'react';
-import parse from "html-react-parser";
 
 export interface ICat {
     name: string,
