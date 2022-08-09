@@ -17,17 +17,17 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
 
     let previousGuesses = corrects.map((correct: number[], i: number) => {
         let answer = correct.map((c: number, j: number) => {
-            return <span style={{ color: (c === 1) ? 'green' : 'red' }}>{guesses[i][j]}</span>
+            return <span key={j} style={{ color: (c === 1) ? 'green' : 'red' }}>{guesses[i][j]}</span>
         })
 
         return <div className={styles.guess}>{answer}</div>
     })
 
-    let hintHTML = hint.map((item: string) => {
+    let hintHTML = hint.map((item: string, i: number) => {
         if (item === " ") {
-            return <span className={styles.hintSpace}></span>
+            return <span key={i} className={styles.hintSpace}></span>
         } else {
-            return <span className={styles.hintLetter}>{item} </span>
+            return <span key={i} className={styles.hintLetter}>{item} </span>
         }
     })
 
@@ -42,11 +42,11 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
                 <>
                     <button>Show Rules</button><button onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button>
                     {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
-                    <ul className={styles.layout}>
+                    <div className={styles.layout}>
                         <div>{previousGuesses}</div>
                         <input type="text" className={styles.input} value={currentGuess} onChange={event => setCurrentGuess(event.target.value)} />
                         <button onClick={() => takeTurn(currentGuess)}>Guess</button>
-                    </ul>
+                    </div>
                 </>
             )
             :

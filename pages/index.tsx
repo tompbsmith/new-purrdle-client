@@ -214,6 +214,7 @@ const Index = (props: any) => {
               <h2>MEOW! <FontAwesomeIcon icon={faPaw} bounce /></h2>
               <img src="https://c.tenor.com/GwTRUJal39sAAAAd/cat-happy-cat.gif" />
               <h3>CORRECT in {turnNumber + 1} {(turnNumber + 1) === 1 ? "guess" : "guesses"}!</h3>
+              <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
                 {guesses.map((item, i) => {
@@ -229,7 +230,7 @@ const Index = (props: any) => {
             <div className={styles.lose}>
               <h2>Aww! <FontAwesomeIcon icon={faPaw} shake /></h2>
               <img src="https://s36537.pcdn.co/wp-content/uploads/2018/05/A-gray-cat-crying-looking-upset.jpg.optimal.jpg" />
-              <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank">{cat.name}</a>!</h3>
+              <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
                 {guesses.map((item, i) => {
