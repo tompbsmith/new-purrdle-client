@@ -14,7 +14,7 @@ const baseUrl = "https://www.catbreedslist.com";
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, guesses, corrects, hint }: any) => {
+export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, guesses, corrects, hint, showRules, setShowRules }: any) => {
     const [showHint, setShowHint] = useState(false);
 
     let previousGuesses = corrects.map((correct: number[], i: number) => {
@@ -42,7 +42,7 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
             ?
             (
                 <>
-                    <div className={styles.buttons}><button className={`${styles.button} ${styles.small}`}>Show Rules</button><button className={`${styles.button} ${styles.small}`} onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button></div>
+                    <div className={styles.buttons}><button onClick={() => setShowRules(!showRules)} className={`${styles.button} ${styles.small}`}>{showRules ? "Hide" : "Show"} Rules</button><button className={`${styles.button} ${styles.small}`} onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button></div>
                     {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
                     <div className={styles.layout}>
                         <div>{previousGuesses}</div>

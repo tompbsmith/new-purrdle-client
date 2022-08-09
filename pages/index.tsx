@@ -225,14 +225,25 @@ const Index = (props: any) => {
 
               <img src="https://i.imgflip.com/5i849s.gif" alt="birthday cat" />
 
-              <p className={styles.birthdayMessage}>Hope you're having a wonderful day!</p>
-              <p className={styles.birthdayMessage}>To open your present, click 'Start' below!</p>
+              <p className={styles.birthdayMessage}>Hope you&apos;re having a wonderful day!</p>
+              <p className={styles.birthdayMessage}>To open your present, click &apos;Start&apos; below!</p>
               <button onClick={() => { setShowLauraCard(false); setShowRules(true); }}>Start <FontAwesomeIcon icon={faPaw} /></button>
             </div>
           </>
         }
         {showRules &&
           <>
+            <div className={styles.cover}></div>
+            <div className={styles.win}>
+              <h2>Rules</h2>
+              <p>Attempt to name the pictured cat breed (changes every day)</p>
+              <p>With each guess, the cat picture will get less blurred.</p>
+              <p>Some cats have multiple photos, tap on the cat photo to toggle to the next one.</p>
+              <p><span style={{ color: "green" }}>Green</span> letters are in the breed&apos;s name.</p>
+              <p><span style={{ color: "red" }}>Red</span> letters are not.</p>
+              <p>Click "Show Hint" if you want to see the letter positions you&apos;ve got correct so far.</p>
+              <button className={styles.small} onClick={() => { setShowRules(false); }}>Close &amp; Play <FontAwesomeIcon icon={faPaw} /></button>
+            </div>
           </>
         }
         {showWin &&
@@ -269,7 +280,7 @@ const Index = (props: any) => {
           </>
         }
         <Cat name={cat.name} images={cat.images} details={cat.details} url={cat.url} turnNumber={turnNumber} />
-        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} />
+        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} showRules={showRules} setShowRules={setShowRules} />
       </Layout>
     </div>
   )
