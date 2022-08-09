@@ -218,7 +218,7 @@ const Index = (props: any) => {
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
                 {guesses.map((item, i) => {
-                  return <div>{i + 1}. {item}</div>
+                  return <div key={i}>{i + 1}. {item}</div>
                 })}
               </div>
             </div>
@@ -234,7 +234,7 @@ const Index = (props: any) => {
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
                 {guesses.map((item, i) => {
-                  return <div>{i + 1}. {item}</div>
+                  return <div key={i}>{i + 1}. {item}</div>
                 })}
               </div>
             </div>

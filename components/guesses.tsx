@@ -20,7 +20,7 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
             return <span key={j} style={{ color: (c === 1) ? 'green' : 'red' }}>{guesses[i][j]}</span>
         })
 
-        return <div className={styles.guess}>{answer}</div>
+        return <div key={i} className={styles.guess}>{answer}</div>
     })
 
     let hintHTML = hint.map((item: string, i: number) => {
