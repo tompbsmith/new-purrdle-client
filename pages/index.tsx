@@ -342,7 +342,7 @@ const Index = (props: any) => {
               <p>Some cats have multiple photos, tap on the cat photo to toggle to the next one.</p>
               <p><span style={{ color: "green" }}>Green</span> letters are in the breed&apos;s name.</p>
               <p><span style={{ color: "red" }}>Red</span> letters are not.</p>
-              <p>Click "Show Hint" if you want to see the letter positions you&apos;ve got correct so far.</p>
+              <p>Click &quot;Show Hint&quot; if you want to see the letter positions you&apos;ve got correct so far.</p>
               <button className={styles.small} onClick={() => { setShowRules(false); localStorage.setItem("showRules", "false"); }}>Close &amp; Play <FontAwesomeIcon icon={faPaw} /></button>
             </div>
           </>
