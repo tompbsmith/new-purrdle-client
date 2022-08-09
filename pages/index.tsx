@@ -223,7 +223,7 @@ const Index = (props: any) => {
               <h2>Happy Birthday Laura!</h2>
               <h2><FontAwesomeIcon icon={faCakeCandles} bounce /> <FontAwesomeIcon icon={faChampagneGlasses} shake /></h2>
 
-              <img src="https://i.imgflip.com/5i849s.gif" />
+              <img src="https://i.imgflip.com/5i849s.gif" alt="birthday cat" />
 
               <p className={styles.birthdayMessage}>Hope you're having a wonderful day!</p>
               <p className={styles.birthdayMessage}>To open your present, click 'Start' below!</p>
@@ -240,7 +240,7 @@ const Index = (props: any) => {
             <div className={styles.cover}></div>
             <div className={styles.win}>
               <h2>MEOW! <FontAwesomeIcon icon={faPaw} bounce /></h2>
-              <img src="https://c.tenor.com/GwTRUJal39sAAAAd/cat-happy-cat.gif" />
+              <img src="https://c.tenor.com/GwTRUJal39sAAAAd/cat-happy-cat.gif" alt="happy cat" />
               <h3>CORRECT in {turnNumber + 1} {(turnNumber + 1) === 1 ? "guess" : "guesses"}!</h3>
               <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
               <span className={styles.guesses}>Your Guesses:</span>
@@ -257,7 +257,7 @@ const Index = (props: any) => {
             <div className={styles.cover}></div>
             <div className={styles.lose}>
               <h2>Aww! <FontAwesomeIcon icon={faPaw} shake /></h2>
-              <img src="https://s36537.pcdn.co/wp-content/uploads/2018/05/A-gray-cat-crying-looking-upset.jpg.optimal.jpg" />
+              <img src="https://s36537.pcdn.co/wp-content/uploads/2018/05/A-gray-cat-crying-looking-upset.jpg.optimal.jpg" alt="sad cat" />
               <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
