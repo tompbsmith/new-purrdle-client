@@ -8,9 +8,9 @@ $breakpoint-xs: 575px;
 
     border: 1px solid black;
 
-    height: 300px;
+    // height: 300px;
 
     @media (min-width: $breakpoint-md) {
-        height: 400px;
+        // height: 400px;
     }
 }
