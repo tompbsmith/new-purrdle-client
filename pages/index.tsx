@@ -355,7 +355,7 @@ const Index = (props: any) => {
             <div className={styles.win}>
               <h2>MEOW! <FontAwesomeIcon icon={faPaw} bounce /></h2>
               <img src="https://c.tenor.com/GwTRUJal39sAAAAd/cat-happy-cat.gif" alt="happy cat" />
-              <h3>CORRECT in {turnNumber + 1} {(turnNumber + 1) === 1 ? "guess" : "guesses"}!</h3>
+              <h3>CORRECT in {turnNumber} {(turnNumber) === 1 ? "guess" : "guesses"}!</h3>
               <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
               <span className={styles.guesses}>Your Guesses:</span>
               <div className={styles.guessesList}>
