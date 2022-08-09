@@ -105,6 +105,10 @@ $breakpoint-xs: 575px;
 
     p {
         font-size: 16px;
+
+        &.small {
+            font-size: 12px;
+        }
     }
 
     overflow-y: auto;

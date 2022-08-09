@@ -14,6 +14,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw, faCakeCandles, faChampagneGlasses, faGift } from '@fortawesome/free-solid-svg-icons';
+import { off } from 'process';
 
 const fetcher = (url: URL) => fetch(url).then((res) => res.json())
 
@@ -43,8 +44,11 @@ const Index = (props: any) => {
   }
 
   function takeTurn(guess: string) {
+    //set flag in storage to say game has started
+    localStorage.setItem("continue", "true");
+
     setCurrentGuess(guess);
-    console.log(currentGuess);
+    console.log("currentGuess: " + currentGuess);
 
     let currentCorrect = compareGuess();
     console.log(currentCorrect);
@@ -54,7 +58,7 @@ const Index = (props: any) => {
 
     //update hint
     let h = [];
-    let hf = hintFlags;
+    let hf = [...hintFlags];
     console.log("hint flags");
     console.log(hintFlags)
     let trimmedName = cat.name.trim();
@@ -96,16 +100,16 @@ const Index = (props: any) => {
     setHint(h)
     setHintFlags(hf)
 
+    setTurnNumber(turnNumber + 1);
+
     if (currentGuess.toLowerCase() === cat.name.toLowerCase().trim()) {
+      localStorage.setItem("win", "true");
       setShowWin(true)
       return;
     }
 
-    setTurnNumber(turnNumber + 1);
-
-    console.log("turn Number: " + turnNumber);
-
     if (turnNumber == 4) {
+      localStorage.setItem("lose", "true");
       setShowLose(true);
       return;
     }
@@ -154,27 +158,26 @@ const Index = (props: any) => {
       let ca = getTodaysCat(cats);
       setCat(getTodaysCat(cats));
 
-      //set hint
-      let h = []
-      let hf = []
-      for (const c of ca.name) {
-        if (c === " ") {
-          h.push(" ");
-          hf.push(true)
-        } else if (c === "-") {
-          h.push("-");
-          hf.push(true)
-        } else {
-          h.push("_");
-          hf.push(false)
+      if (localStorage.getItem("continue") == null) {
+        console.log("no continue so reset hint and flags");
+        //set hint
+        let h = []
+        let hf = []
+        for (const c of ca.name) {
+          if (c === " ") {
+            h.push(" ");
+            hf.push(true)
+          } else if (c === "-") {
+            h.push("-");
+            hf.push(true)
+          } else {
+            h.push("_");
+            hf.push(false)
+          }
         }
-
-
+        setHint(h)
+        setHintFlags(hf)
       }
-      setHint(h)
-      setHintFlags(hf)
-
-      console.log(hint)
     }
   }, [data])
 
@@ -183,9 +186,9 @@ const Index = (props: any) => {
     const windowUrl = window.location.search.substring(1, window.location.search.length);
     if (windowUrl === "birthday") {
       setShowLauraCard(true);
+      setShowRules(false);
     }
   }, [])
-
 
   let blankCat = {
     name: "Blank",
@@ -203,10 +206,106 @@ const Index = (props: any) => {
   const [cat, setCat] = useState<ICat>(blankCat)
   const [hint, setHint] = useState<string[]>([])
   const [hintFlags, setHintFlags] = useState<boolean[]>([])
-  const [showRules, setShowRules] = useState<boolean>(false)
+  const [showRules, setShowRules] = useState<boolean>(true)
   const [showWin, setShowWin] = useState<boolean>(false)
   const [showLose, setShowLose] = useState<boolean>(false)
   const [showLauraCard, setShowLauraCard] = useState<boolean>(false)
+  const [gameStarted, setGameStarted] = useState<boolean>(false)
+
+  //get localstorage
+  useEffect(() => {
+    let gs = localStorage.getItem("guesses");
+    let cs = localStorage.getItem("corrects");
+    let tn = localStorage.getItem("turnNumber");
+
+    let sr = localStorage.getItem("showRules");
+
+    let w = localStorage.getItem("win");
+    let l = localStorage.getItem("lose");
+
+    let h = localStorage.getItem("hint");
+    let hf = localStorage.getItem("hintFlags");
+
+    if (w != null) {
+      setShowRules(false);
+      setShowWin(true);
+    }
+
+    if (l != null) {
+      setShowLose(true);
+      setShowRules(false);
+    }
+
+    if (sr != null) {
+      setShowRules(false);
+    }
+
+    if (gs != null) {
+      let gs2 = JSON.parse(gs);
+      setGuesses(gs2);
+    }
+
+    if (cs != null) {
+      let cs2 = JSON.parse(cs);
+      setCorrects(cs2);
+    }
+
+    if (h != null) {
+      let h2 = JSON.parse(h);
+      setHint(h2);
+    }
+
+    if (hf != null) {
+      let hf2 = JSON.parse(hf);
+      setHintFlags(hf2);
+    }
+
+    if (tn != null) {
+      console.log("ls turn number: " + tn + " | " + parseInt(tn))
+      setTurnNumber(parseInt(tn));
+    }
+
+    setGameStarted(true)
+  }, [])
+
+  useEffect(() => {
+    if (gameStarted) {
+      //local storage
+      localStorage.setItem("turnNumber", turnNumber.toString());
+    }
+  }, [turnNumber, gameStarted])
+
+  useEffect(() => {
+    if (gameStarted) {
+      //local storage
+      localStorage.setItem("guesses", JSON.stringify(guesses));
+    }
+  }, [guesses, gameStarted])
+
+  useEffect(() => {
+    if (gameStarted) {
+      //local storage
+      localStorage.setItem("corrects", JSON.stringify(corrects));
+    }
+  }, [corrects, gameStarted])
+
+  useEffect(() => {
+    console.log("SETTING: hint - GAME NOT STARTED");
+    if (gameStarted) {
+      //local storage
+      console.log("SETTING: hint - " + hint);
+      localStorage.setItem("hint", JSON.stringify(hint));
+    }
+  }, [hint])
+
+  useEffect(() => {
+    console.log("SETTING: hintFlags - GAME NOT STARTED");
+    if (gameStarted) {
+      //local storage
+      console.log("SETTING: hintFlags - " + hintFlags);
+      localStorage.setItem("hintFlags", JSON.stringify(hintFlags));
+    }
+  }, [hintFlags])
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
@@ -225,8 +324,10 @@ const Index = (props: any) => {
 
               <img src="https://i.imgflip.com/5i849s.gif" alt="birthday cat" />
 
+              <p className={styles.birthdayMessage} style={{ textAlign: "left" }}>To Laura</p>
               <p className={styles.birthdayMessage}>Hope you&apos;re having a wonderful day!</p>
               <p className={styles.birthdayMessage}>To open your present, click &apos;Start&apos; below!</p>
+              <p className={styles.birthdayMessage} style={{ textAlign: "right" }}>Love Tom</p>
               <button onClick={() => { setShowLauraCard(false); setShowRules(true); }}>Start <FontAwesomeIcon icon={faPaw} /></button>
             </div>
           </>
@@ -242,7 +343,7 @@ const Index = (props: any) => {
               <p><span style={{ color: "green" }}>Green</span> letters are in the breed&apos;s name.</p>
               <p><span style={{ color: "red" }}>Red</span> letters are not.</p>
               <p>Click "Show Hint" if you want to see the letter positions you&apos;ve got correct so far.</p>
-              <button className={styles.small} onClick={() => { setShowRules(false); }}>Close &amp; Play <FontAwesomeIcon icon={faPaw} /></button>
+              <button className={styles.small} onClick={() => { setShowRules(false); localStorage.setItem("showRules", "false"); }}>Close &amp; Play <FontAwesomeIcon icon={faPaw} /></button>
             </div>
           </>
         }
@@ -270,12 +371,14 @@ const Index = (props: any) => {
               <h2>Aww! <FontAwesomeIcon icon={faPaw} shake /></h2>
               <img src="https://s36537.pcdn.co/wp-content/uploads/2018/05/A-gray-cat-crying-looking-upset.jpg.optimal.jpg" alt="sad cat" />
               <h3 className={styles.red}>The answer was <a style={{ textDecoration: "underline" }} href={baseUrl + cat.url} target="_blank" rel="noreferrer">{cat.name}</a>!</h3>
+              <p className={styles.small}>Click above to learn more!</p>
               <span className={styles.guesses}>Your Guesses:</span>
-              <div className={styles.guessesList}>
+              <div className={styles.guessesList} style={{ marginBottom: "20px;" }}>
                 {guesses.map((item, i) => {
                   return <div key={i}>{i + 1}. {item}</div>
                 })}
               </div>
+              <button className={styles.button} onClick={() => { setShowLose(false) }}>Close <FontAwesomeIcon icon={faPaw} /></button>
             </div>
           </>
         }

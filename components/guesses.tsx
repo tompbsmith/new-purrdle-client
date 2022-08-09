@@ -1,6 +1,6 @@
 import styles from './guesses.module.scss';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface ICat {
     name: string,
@@ -34,28 +34,21 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
     })
 
 
-    let hintTest = <span>hello</span>;
-    let hintTest2 = <span>hello2</span>;
 
-    return (<>
-        {turnNumber < 5
-            ?
-            (
-                <>
-                    <div className={styles.buttons}><button onClick={() => setShowRules(!showRules)} className={`${styles.button} ${styles.small}`}>{showRules ? "Hide" : "Show"} Rules</button><button className={`${styles.button} ${styles.small}`} onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button></div>
-                    {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
-                    <div className={styles.layout}>
-                        <div>{previousGuesses}</div>
+    return (
+        <>
+            <div className={styles.buttons}><button onClick={() => setShowRules(!showRules)} className={`${styles.button} ${styles.small}`}>{showRules ? "Hide" : "Show"} Rules</button><button className={`${styles.button} ${styles.small}`} onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button></div>
+            {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
+            <div className={styles.layout}>
+                <div>{previousGuesses}</div>
+                {turnNumber < 5 ?
+                    <>
                         <input type="text" className={styles.input} value={currentGuess} onChange={event => setCurrentGuess(event.target.value)} />
                         <button className={styles.button} onClick={() => takeTurn(currentGuess)}>Guess <FontAwesomeIcon icon={faPaw} /></button>
-                    </div>
-                </>
-            )
-            :
-            (
-                <div>Game Over</div>
-            )
-        }
-    </>
+                    </> :
+                    <></>}
+
+            </div>
+        </>
     )
 }
