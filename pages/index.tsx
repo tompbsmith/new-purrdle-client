@@ -385,7 +385,7 @@ const Index = (props: any) => {
           </>
         }
         <Cat name={cat.name} images={cat.images} details={cat.details} url={cat.url} turnNumber={turnNumber} />
-        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} showRules={showRules} setShowRules={setShowRules} />
+        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} showRules={showRules} setShowRules={setShowRules} hasWon={showWin} />
       </Layout>
     </div>
   )

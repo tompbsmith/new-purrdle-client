@@ -14,7 +14,7 @@ const baseUrl = "https://www.catbreedslist.com";
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, guesses, corrects, hint, showRules, setShowRules }: any) => {
+export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, guesses, corrects, hint, showRules, setShowRules, hasWon }: any) => {
     const [showHint, setShowHint] = useState(false);
 
     let previousGuesses = corrects.map((correct: number[], i: number) => {
@@ -41,7 +41,7 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
             {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
             <div className={styles.layout}>
                 <div>{previousGuesses}</div>
-                {turnNumber < 5 ?
+                {(turnNumber < 5 && !hasWon) ?
                     <>
                         <input type="text" className={styles.input} value={currentGuess} onChange={event => setCurrentGuess(event.target.value)} />
                         <button className={styles.button} onClick={() => { takeTurn(currentGuess); }}>Guess <FontAwesomeIcon icon={faPaw} /></button>
