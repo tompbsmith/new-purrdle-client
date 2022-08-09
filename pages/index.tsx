@@ -13,7 +13,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faPaw, faCakeCandles, faChampagneGlasses, faGift } from '@fortawesome/free-solid-svg-icons';
 
 const fetcher = (url: URL) => fetch(url).then((res) => res.json())
 
@@ -109,6 +109,8 @@ const Index = (props: any) => {
       setShowLose(true);
       return;
     }
+
+    setCurrentGuess("")
   }
 
   function compareGuess(): number[] {
@@ -176,6 +178,14 @@ const Index = (props: any) => {
     }
   }, [data])
 
+  //set laura card
+  useEffect(() => {
+    const windowUrl = window.location.search.substring(1, window.location.search.length);
+    if (windowUrl === "birthday") {
+      setShowLauraCard(true);
+    }
+  }, [])
+
 
   let blankCat = {
     name: "Blank",
@@ -196,18 +206,31 @@ const Index = (props: any) => {
   const [showRules, setShowRules] = useState<boolean>(false)
   const [showWin, setShowWin] = useState<boolean>(false)
   const [showLose, setShowLose] = useState<boolean>(false)
-  const [showLaura, setShowLaura] = useState<boolean>(false)
+  const [showLauraCard, setShowLauraCard] = useState<boolean>(false)
 
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  //set laura card
-  const windowUrl = window.location.search;
-  console.log("windowUrl: " + windowUrl);
-
   return (
     <div>
       <Layout>
+        {
+          showLauraCard &&
+          <>
+            <div className={styles.cover}></div>
+            <div className={styles.win}>
+              <h2><FontAwesomeIcon icon={faChampagneGlasses} shake /> <FontAwesomeIcon icon={faCakeCandles} bounce /></h2>
+              <h2>Happy Birthday Laura!</h2>
+              <h2><FontAwesomeIcon icon={faCakeCandles} bounce /> <FontAwesomeIcon icon={faChampagneGlasses} shake /></h2>
+
+              <img src="https://i.imgflip.com/5i849s.gif" />
+
+              <p className={styles.birthdayMessage}>Hope you're having a wonderful day!</p>
+              <p className={styles.birthdayMessage}>To open your present, click 'Start' below!</p>
+              <button onClick={() => { setShowLauraCard(false); setShowRules(true); }}>Start <FontAwesomeIcon icon={faPaw} /></button>
+            </div>
+          </>
+        }
         {showRules &&
           <>
           </>

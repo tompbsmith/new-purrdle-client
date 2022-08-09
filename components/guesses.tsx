@@ -11,6 +11,9 @@ export interface ICat {
 
 const baseUrl = "https://www.catbreedslist.com";
 
+import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, guesses, corrects, hint }: any) => {
     const [showHint, setShowHint] = useState(false);
 
@@ -39,12 +42,12 @@ export const Guesses = ({ takeTurn, turnNumber, currentGuess, setCurrentGuess, g
             ?
             (
                 <>
-                    <button>Show Rules</button><button onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button>
+                    <div className={styles.buttons}><button className={`${styles.button} ${styles.small}`}>Show Rules</button><button className={`${styles.button} ${styles.small}`} onClick={() => setShowHint(!showHint)}>{showHint ? "Hide" : "Show"} Hint</button></div>
                     {showHint ? <div className={styles.hint}>{hintHTML}</div> : null}
                     <div className={styles.layout}>
                         <div>{previousGuesses}</div>
                         <input type="text" className={styles.input} value={currentGuess} onChange={event => setCurrentGuess(event.target.value)} />
-                        <button onClick={() => takeTurn(currentGuess)}>Guess</button>
+                        <button className={styles.button} onClick={() => takeTurn(currentGuess)}>Guess <FontAwesomeIcon icon={faPaw} /></button>
                     </div>
                 </>
             )
