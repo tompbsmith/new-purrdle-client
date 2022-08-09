@@ -1,0 +1,80 @@
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 8;
+
+    opacity: .7;
+    background-color: white;
+}
+
+.win,
+.lose {
+    z-index: 10;
+    width: 25%;
+    left: 0;
+    right: 0;
+    top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 80vh;
+    position: absolute;
+
+    padding: 2rem 1rem;
+    margin: 0 auto;
+
+    background-color: white;
+    color: orange;
+
+    border: orange 2px solid;
+    border-radius: 5px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+
+    text-align: center;
+
+    h2 {
+        margin: 1rem 0;
+    }
+
+    h3 {
+        color: green;
+        font-size: 36px;
+        margin: 0;
+    }
+
+    span.guesses {
+        font-size: 16px;
+    }
+
+    ol,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        font-size: 14px;
+        // list-style-type: none;
+    }
+
+    .guessesList {
+        font-size: 14px;
+    }
+
+    img {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .red {
+        color: red;
+    }
+
+    overflow-y: auto;
+}
