@@ -1,5 +1,7 @@
 import useSWR from 'swr'
 
+import Head from 'next/head';
+
 import Layout from '../components/layout';
 import { ICat, Cat } from '../components/cat';
 import { Guesses } from '../components/guesses';
@@ -314,6 +316,9 @@ const Index = (props: any) => {
 
   return (
     <div>
+      <Head>
+        <title>Purrdle &#128049;</title>
+      </Head>
       <Layout>
         {
           showLauraCard &&
