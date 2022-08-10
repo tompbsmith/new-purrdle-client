@@ -30,18 +30,66 @@ interface ICatRaw {
 
 const Index = (props: any) => {
 
+  function resetGame() {
+    console.log("resetting stats - new day");
+
+    //Reset Data for Today
+    setHintFlags([]);
+    setHint([]);
+    setShowWin(false)
+    localStorage.removeItem("continue");
+    setCorrects([])
+    setCurrentGuess("")
+    setTurnNumber(0)
+    setGuesses([])
+    localStorage.removeItem("win");
+    setShowWin(false)
+    setShowLose(false)
+    setWin(false);
+
+    localStorage.setItem("playedToday", JSON.stringify(new Date()));
+  }
+
   function getTodaysCat(cats: ICatRaw[]): ICat {
     let today = new Date();
+    console.log("TODAY: " + today);
+    let c = cats[0];
 
-    let c = cats[20];
+    if (!localStorage.getItem("playedToday")) {
+      //They haven't played so reset today's stats and save off yesterday's stats
+      resetGame();
+    }
+
+    if (localStorage.getItem("playedToday")) {
+      let pt = JSON.parse(localStorage.getItem("playedToday") as string);
+
+      let date = new Date(pt);
+
+      console.log("playedToday: " + date.toString());
+
+      if (date.getFullYear() < today.getFullYear() ||
+        (date.getFullYear() === today.getFullYear() && date.getMonth() < today.getMonth()) ||
+        (date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() && date.getDate() < today.getDate())) {
+        //is earlier than today so reset data
+        resetGame();
+      }
+    }
+
+    if (today.getDate() === 9) {
+      c = cats[20];
+      console.log("CAT 9th: " + c.name)
+    } else if (today.getDate() === 10) {
+      c = cats[40];
+      console.log("CAT 10th: " + c.name)
+    }
 
     console.log(c.name);
 
     return {
-      name: cats[20].name,
-      images: [cats[20].mainImage, ...cats[20].images],
-      details: cats[20].details,
-      url: cats[20].url
+      name: c.name,
+      images: [c.mainImage, ...c.images],
+      details: c.details,
+      url: c.url
     }
   }
 
@@ -61,16 +109,16 @@ const Index = (props: any) => {
     //update hint
     let h = [];
     let hf = [...hintFlags];
-    console.log("hint flags");
-    console.log(hintFlags)
+    // console.log("hint flags");
+    // console.log(hintFlags)
     let trimmedName = cat.name.trim();
     for (let i = 0; i < trimmedName.length; i++) {
       if (!hf[i]) {
-        console.log("looking for: " + trimmedName[i]);
+        // console.log("looking for: " + trimmedName[i]);
         let flag = false;
         for (let j = 0; j < currentGuess.length; j++) {
           if (trimmedName[i] === " ") {
-            console.log("is space");
+            // console.log("is space");
             h.push(" ");
             flag = true;
             break;
@@ -79,7 +127,7 @@ const Index = (props: any) => {
             flag = true;
             break;
           } else if (currentGuess[j].toLowerCase() === trimmedName[i].toLowerCase()) {
-            console.log("found!");
+            // console.log("found!");
 
             h.push(trimmedName[i])
             hf[i] = true
@@ -105,9 +153,33 @@ const Index = (props: any) => {
     setTurnNumber(turnNumber + 1);
 
     if (currentGuess.toLowerCase() === cat.name.toLowerCase().trim()) {
+      setWin(true)
       localStorage.setItem("win", "true");
       window.scrollTo(0, 0);
       setShowWin(true)
+
+      //setData
+      localStorage.setItem("todaysData", JSON.stringify({
+        turnNumber: turnNumber,
+        date: new Date(),
+        win: true
+      }))
+
+      if (!localStorage.getItem("savedData")) {
+        localStorage.setItem("savedData", JSON.stringify([{
+          turnNumber: turnNumber,
+          date: new Date(),
+          win: true
+        }]))
+      } else {
+        let sd = localStorage.getItem("savedData") as string;
+
+        localStorage.setItem("savedData", JSON.stringify([...JSON.parse(sd), {
+          turnNumber: turnNumber,
+          date: new Date(),
+          win: true
+        }]))
+      }
       return;
     }
 
@@ -115,6 +187,29 @@ const Index = (props: any) => {
       localStorage.setItem("lose", "true");
       window.scrollTo(0, 0);
       setShowLose(true);
+
+      //setData
+      localStorage.setItem("todaysData", JSON.stringify({
+        turnNumber: turnNumber,
+        date: new Date(),
+        win: false
+      }))
+
+      if (!localStorage.getItem("savedData")) {
+        localStorage.setItem("savedData", JSON.stringify([{
+          turnNumber: turnNumber,
+          date: new Date(),
+          win: false
+        }]))
+      } else {
+        let sd = localStorage.getItem("savedData") as string;
+
+        localStorage.setItem("savedData", JSON.stringify([...JSON.parse(sd), {
+          turnNumber: turnNumber,
+          date: new Date(),
+          win: false
+        }]))
+      }
       return;
     }
 
@@ -215,6 +310,7 @@ const Index = (props: any) => {
   const [showLose, setShowLose] = useState<boolean>(false)
   const [showLauraCard, setShowLauraCard] = useState<boolean>(false)
   const [gameStarted, setGameStarted] = useState<boolean>(false)
+  const [win, setWin] = useState<boolean>(false)
 
   //get localstorage
   useEffect(() => {
@@ -233,6 +329,7 @@ const Index = (props: any) => {
     if (w != null) {
       setShowRules(false);
       setShowWin(true);
+      setWin(true);
     }
 
     if (l != null) {
@@ -294,19 +391,19 @@ const Index = (props: any) => {
   }, [corrects, gameStarted])
 
   useEffect(() => {
-    console.log("SETTING: hint - GAME NOT STARTED");
+    // console.log("SETTING: hint - GAME NOT STARTED");
     if (gameStarted) {
       //local storage
-      console.log("SETTING: hint - " + hint);
+      // console.log("SETTING: hint - " + hint);
       localStorage.setItem("hint", JSON.stringify(hint));
     }
   }, [hint])
 
   useEffect(() => {
-    console.log("SETTING: hintFlags - GAME NOT STARTED");
+    // console.log("SETTING: hintFlags - GAME NOT STARTED");
     if (gameStarted) {
       //local storage
-      console.log("SETTING: hintFlags - " + hintFlags);
+      // console.log("SETTING: hintFlags - " + hintFlags);
       localStorage.setItem("hintFlags", JSON.stringify(hintFlags));
     }
   }, [hintFlags])
@@ -394,8 +491,8 @@ const Index = (props: any) => {
             </div>
           </>
         }
-        <Cat name={cat.name} images={cat.images} details={cat.details} url={cat.url} turnNumber={turnNumber} />
-        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} showRules={showRules} setShowRules={setShowRules} hasWon={showWin} />
+        <Cat name={cat.name} images={cat.images} details={cat.details} url={cat.url} turnNumber={turnNumber} win={win} />
+        <Guesses turnNumber={turnNumber} takeTurn={takeTurn} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} guesses={guesses} corrects={corrects} hint={hint} showRules={showRules} setShowRules={setShowRules} hasWon={win} />
       </Layout>
     </div>
   )

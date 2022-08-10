@@ -11,10 +11,10 @@ export interface ICat {
 
 const baseUrl = "https://www.catbreedslist.com";
 
-export const Cat = ({ name, images, details, url, turnNumber }: any) => {
+export const Cat = ({ name, images, details, url, turnNumber, win }: any) => {
     const blurLevel = [
-        20,
         10,
+        7,
         5,
         2,
         0
@@ -34,7 +34,7 @@ export const Cat = ({ name, images, details, url, turnNumber }: any) => {
     return (
         name !== "Blank"
             ?
-            <img onClick={() => changeImage()} className={styles.cat} style={{ filter: `blur(${blurLevel[turnNumber]}px)` }} src={"https://www.catbreedslist.com" + images[currentImageIndex]} />
+            <img onClick={() => changeImage()} className={styles.cat} style={{ filter: win ? 'blur(0)' : `blur(${blurLevel[turnNumber]}px)`, }} src={"https://www.catbreedslist.com" + images[currentImageIndex]} />
             :
             <p>Loading...</p>
     )
