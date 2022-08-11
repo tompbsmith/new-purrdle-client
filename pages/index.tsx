@@ -84,7 +84,19 @@ const Index = (props: any) => {
     } else if (today.getDate() === 11) {
       c = cats[40];
       console.log("CAT 11th: " + c.name);
-    }
+    } else if (today.getDate() === 12) {
+      c = cats[50];
+      console.log("CAT 12th: " + c.name);
+    } else if (today.getDate() === 13) {
+      c = cats[52];
+      console.log("CAT 13th: " + c.name);
+    } else if (today.getDate() === 14) {
+      c = cats[60];
+      console.log("CAT 14th: " + c.name);
+    } else if (today.getDate() === 15) {
+      c = cats[62];
+      console.log("CAT 15th: " + c.name);
+    } 
 
     console.log(c.name);
 
