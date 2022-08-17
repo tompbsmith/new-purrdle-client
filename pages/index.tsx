@@ -98,16 +98,16 @@ const Index = (props: any) => {
       console.log("CAT 15th: " + c.name);
     } else if (today.getDate() === 16) {
       c = cats[65];
-      console.log("CAT 15th: " + c.name);
+      // console.log("CAT 16th: " + c.name);
     } else if (today.getDate() === 17) {
-      c = cats[77];
-      console.log("CAT 16th: " + c.name);
+      c = cats[2];
+      // console.log("CAT 17th: " + c.name);
     } else if (today.getDate() === 18) {
-      c = cats[76];
-      console.log("CAT 17th: " + c.name);
+      c = cats[7];
+      // console.log("CAT 18th: " + c.name);
     } else if (today.getDate() === 19) {
-      c = cats[75];
-      console.log("CAT 18th: " + c.name);
+      c = cats[12];
+      // console.log("CAT 19th: " + c.name);
     }
 
     console.log(c.name);
