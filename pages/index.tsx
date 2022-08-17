@@ -100,7 +100,7 @@ const Index = (props: any) => {
       c = cats[65];
       // console.log("CAT 16th: " + c.name);
     } else if (today.getDate() === 17) {
-      c = cats[2];
+      c = cats[3];
       // console.log("CAT 17th: " + c.name);
     } else if (today.getDate() === 18) {
       c = cats[7];
