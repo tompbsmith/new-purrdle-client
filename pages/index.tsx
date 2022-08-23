@@ -108,6 +108,39 @@ const Index = (props: any) => {
     } else if (today.getDate() === 19) {
       c = cats[12];
       // console.log("CAT 19th: " + c.name);
+    } else if (today.getDate() === 20) {
+      c = cats[57];
+      // console.log("CAT 20th: " + c.name);
+    } else if (today.getDate() === 21) {
+      c = cats[8];
+      // console.log("CAT 21st: " + c.name);
+    } else if (today.getDate() === 22) {
+      c = cats[44];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 23) {
+      c = cats[0];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 24) {
+      c = cats[39];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 25) {
+      c = cats[22];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 26) {
+      c = cats[17];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 27) {
+      c = cats[46];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 28) {
+      c = cats[66];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 29) {
+      c = cats[47];
+      // console.log("CAT 22nd: " + c.name);
+    } else if (today.getDate() === 30) {
+      c = cats[70];
+      // console.log("CAT 22nd: " + c.name);
     }
 
     console.log(c.name);
