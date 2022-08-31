@@ -144,6 +144,9 @@ const Index = (props: any) => {
     } else if (today.getDate() === 31) {
       c = cats[6];
       // console.log("CAT 31st: " + c.name);
+    } else if (today.getDate() === 1) {
+      c = cats[32];
+      console.log("CAT 1st sept: " + c.name)
     }
 
     console.log(c.name);
