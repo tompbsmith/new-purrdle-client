@@ -159,6 +159,12 @@ const Index = (props: any) => {
     } else if (today.getDate() === 5) {
       c = cats[45];
       console.log("CAT 5th sept: " + c.name)
+    } else if (today.getDate() === 6) {
+      c = cats[1];
+      console.log("CAT 6th sept: " + c.name)
+    } else if (today.getDate() === 7) {
+      c = cats[43];
+      console.log("CAT 7th sept: " + c.name)
     }
 
     console.log(c.name);
