@@ -75,7 +75,7 @@ const Index = (props: any) => {
       }
     }
 
-    if (today.getDate() === 9) {
+    if (today.getMonyh() === 7 && today.getDate() === 9) {
       c = cats[20];
       console.log("CAT 9th: " + c.name)
     } else if (today.getDate() === 10) {
@@ -165,6 +165,9 @@ const Index = (props: any) => {
     } else if (today.getDate() === 7) {
       c = cats[43];
       console.log("CAT 7th sept: " + c.name)
+    } else if (today.getMonth() === 8 && today.getDate() === 9) {
+      c = cats[51];
+      console.log("CAT 9th sept: " + c.name)
     }
 
     console.log(c.name);
