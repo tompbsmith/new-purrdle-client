@@ -75,7 +75,7 @@ const Index = (props: any) => {
       }
     }
 
-    if (today.getMonth()) === 7 && today.getDate() === 9) {
+    if (today.getMonth() === 7 && today.getDate() === 9) {
       c = cats[20];
       console.log("CAT 9th: " + c.name)
     } else if (today.getDate() === 10) {
