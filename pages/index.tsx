@@ -75,102 +75,116 @@ const Index = (props: any) => {
       }
     }
 
-    if (today.getMonth() === 7 && today.getDate() === 9) {
-      c = cats[20];
-      console.log("CAT 9th: " + c.name)
-    } else if (today.getDate() === 10) {
-      c = cats[49];
-      console.log("CAT 10th: " + c.name)
-    } else if (today.getDate() === 11) {
-      c = cats[40];
-      console.log("CAT 11th: " + c.name);
-    } else if (today.getDate() === 12) {
-      c = cats[50];
-      console.log("CAT 12th: " + c.name);
-    } else if (today.getDate() === 13) {
-      c = cats[52];
-      console.log("CAT 13th: " + c.name);
-    } else if (today.getDate() === 14) {
-      c = cats[60];
-      console.log("CAT 14th: " + c.name);
-    } else if (today.getDate() === 15) {
-      c = cats[64];
-      console.log("CAT 15th: " + c.name);
-    } else if (today.getDate() === 16) {
-      c = cats[65];
-      // console.log("CAT 16th: " + c.name);
-    } else if (today.getDate() === 17) {
-      c = cats[3];
-      // console.log("CAT 17th: " + c.name);
-    } else if (today.getDate() === 18) {
-      c = cats[7];
-      // console.log("CAT 18th: " + c.name);
-    } else if (today.getDate() === 19) {
-      c = cats[12];
-      // console.log("CAT 19th: " + c.name);
-    } else if (today.getDate() === 20) {
-      c = cats[57];
-      // console.log("CAT 20th: " + c.name);
-    } else if (today.getDate() === 21) {
-      c = cats[8];
-      // console.log("CAT 21st: " + c.name);
-    } else if (today.getDate() === 22) {
-      c = cats[44];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 23) {
-      c = cats[0];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 24) {
-      c = cats[39];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 25) {
-      c = cats[22];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 26) {
-      c = cats[17];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 27) {
-      c = cats[46];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 28) {
-      c = cats[66];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 29) {
-      c = cats[47];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 30) {
-      c = cats[70];
-      // console.log("CAT 22nd: " + c.name);
-    } else if (today.getDate() === 31) {
-      c = cats[6];
-      // console.log("CAT 31st: " + c.name);
-    } else if (today.getDate() === 1) {
-      c = cats[32];
-      console.log("CAT 1st sept: " + c.name)
-    } else if (today.getDate() === 2) {
-      c = cats[55];
-      console.log("CAT 2nd sept: " + c.name)
-    } else if (today.getDate() === 3) {
-      c = cats[24];
-      console.log("CAT 3rd sept: " + c.name)
-    } else if (today.getDate() === 4) {
-      c = cats[31];
-      console.log("CAT 4th sept: " + c.name)
-    } else if (today.getDate() === 5) {
-      c = cats[45];
-      console.log("CAT 5th sept: " + c.name)
-    } else if (today.getDate() === 6) {
-      c = cats[1];
-      console.log("CAT 6th sept: " + c.name)
-    } else if (today.getDate() === 7) {
-      c = cats[43];
-      console.log("CAT 7th sept: " + c.name)
-    } else if (today.getMonth() === 8 && today.getDate() === 9) {
-      c = cats[51];
-      console.log("CAT 9th sept: " + c.name)
-    } else if (today.getMonth() === 8 && today.getDate() === 10) {
-      c = cats[23];
+    if (today.getMonth() === 7) {
+      //Aug
+      if (today.getDate() === 9) {
+        c = cats[20];
+        console.log("CAT 9th: " + c.name)
+      } else if (today.getDate() === 10) {
+        c = cats[49];
+        console.log("CAT 10th: " + c.name)
+      } else if (today.getDate() === 11) {
+        c = cats[40];
+        console.log("CAT 11th: " + c.name);
+      } else if (today.getDate() === 12) {
+        c = cats[50];
+        console.log("CAT 12th: " + c.name);
+      } else if (today.getDate() === 13) {
+        c = cats[52];
+        console.log("CAT 13th: " + c.name);
+      } else if (today.getDate() === 14) {
+        c = cats[60];
+        console.log("CAT 14th: " + c.name);
+      } else if (today.getDate() === 15) {
+        c = cats[64];
+        console.log("CAT 15th: " + c.name);
+      } else if (today.getDate() === 16) {
+        c = cats[65];
+        // console.log("CAT 16th: " + c.name);
+      } else if (today.getDate() === 17) {
+        c = cats[3];
+        // console.log("CAT 17th: " + c.name);
+      } else if (today.getDate() === 18) {
+        c = cats[7];
+        // console.log("CAT 18th: " + c.name);
+      } else if (today.getDate() === 19) {
+        c = cats[12];
+        // console.log("CAT 19th: " + c.name);
+      } else if (today.getDate() === 20) {
+        c = cats[57];
+        // console.log("CAT 20th: " + c.name);
+      } else if (today.getDate() === 21) {
+        c = cats[8];
+        // console.log("CAT 21st: " + c.name);
+      } else if (today.getDate() === 22) {
+        c = cats[44];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 23) {
+        c = cats[0];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 24) {
+        c = cats[39];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 25) {
+        c = cats[22];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 26) {
+        c = cats[17];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 27) {
+        c = cats[46];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 28) {
+        c = cats[66];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 29) {
+        c = cats[47];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 30) {
+        c = cats[70];
+        // console.log("CAT 22nd: " + c.name);
+      } else if (today.getDate() === 31) {
+        c = cats[6];
+        // console.log("CAT 31st: " + c.name);
+      }
+    } else if (today.getMonth() === 8) {
+      //Sept
+      if (today.getDate() === 1) {
+        c = cats[32];
+        console.log("CAT 1st sept: " + c.name)
+      } else if (today.getDate() === 2) {
+        c = cats[55];
+        console.log("CAT 2nd sept: " + c.name)
+      } else if (today.getDate() === 3) {
+        c = cats[24];
+        console.log("CAT 3rd sept: " + c.name)
+      } else if (today.getDate() === 4) {
+        c = cats[31];
+        console.log("CAT 4th sept: " + c.name)
+      } else if (today.getDate() === 5) {
+        c = cats[45];
+        console.log("CAT 5th sept: " + c.name)
+      } else if (today.getDate() === 6) {
+        c = cats[1];
+        console.log("CAT 6th sept: " + c.name)
+      } else if (today.getDate() === 7) {
+        c = cats[43];
+        console.log("CAT 7th sept: " + c.name)
+      } else if (today.getDate() === 9) {
+        c = cats[51];
+        console.log("CAT 9th sept: " + c.name)
+      } else if (today.getDate() === 10) {
+        c = cats[2];
+      } else if (today.getDate() === 11) {
+        c = cats[69];
+      } else if (today.getDate() === 12) {
+        c = cats[41];
+      } else if (today.getDate() === 13) {
+        c = cats[33];
+      }
     }
+
+
 
     console.log(today.getMonth() + "-" + today.getDate());
 
