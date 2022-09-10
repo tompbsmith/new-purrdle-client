@@ -168,6 +168,8 @@ const Index = (props: any) => {
     } else if (today.getMonth() === 8 && today.getDate() === 9) {
       c = cats[51];
       console.log("CAT 9th sept: " + c.name)
+    } else if (today.getMonth() === 8 && today.getDate() === 10) {
+      c = cats[23];
     }
 
     console.log(c.name);
