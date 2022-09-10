@@ -172,7 +172,9 @@ const Index = (props: any) => {
       c = cats[23];
     }
 
-    console.log(c.name);
+    console.log(today.getMonth() + "-" + today.getDate());
+
+    //console.log(c.name);
 
     return {
       name: c.name,
