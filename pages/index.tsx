@@ -210,7 +210,7 @@ const Index = (props: any) => {
       } else if (today.getDate() === 30) {
         c = cats[1];
       } 
-    } else if(today.getMonth === 9) {
+    } else if(today.getMonth() === 9) {
       if (today.getDate() === 1) {
         c = cats[14];
       } else if (today.getDate() === 2) {
