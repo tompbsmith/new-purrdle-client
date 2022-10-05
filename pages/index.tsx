@@ -219,7 +219,7 @@ const Index = (props: any) => {
         c = cats[67];
       } else if (today.getDate() === 4) {
         c = cats[22];
-      } else if (today.getDate() === 3) {
+      } else if (today.getDate() === 6) {
         c = cats[52];
       }
     }
