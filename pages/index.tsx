@@ -229,6 +229,8 @@ const Index = (props: any) => {
         c = cats[37];
       } else if (today.getDate() === 10) {
         c = cats[63];
+      } else if (today.getDate() === 11) {
+        c = cats[12];
       }
     }
 
