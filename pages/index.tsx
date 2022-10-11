@@ -53,6 +53,7 @@ const Index = (props: any) => {
   function getTodaysCat(cats: ICatRaw[]): ICat {
     let today = new Date();
     console.log("TODAY: " + today);
+    console.log("no of cats: " + cats.length);
     let c = cats[0];
 
     if (!localStorage.getItem("playedToday")) {
@@ -198,7 +199,7 @@ const Index = (props: any) => {
       } else if (today.getDate() === 24) {
         c = cats[13];
       } else if (today.getDate() === 25) {
-        c = cats[23]; 
+        c = cats[23];
       } else if (today.getDate() === 25) {
         c = cats[29];
       } else if (today.getDate() === 27) {
@@ -209,8 +210,8 @@ const Index = (props: any) => {
         c = cats[50];
       } else if (today.getDate() === 30) {
         c = cats[3];
-      } 
-    } else if(today.getMonth() === 9) {
+      }
+    } else if (today.getMonth() === 9) {
       if (today.getDate() === 1) {
         c = cats[14];
       } else if (today.getDate() === 2) {
@@ -223,14 +224,24 @@ const Index = (props: any) => {
         c = cats[71];
       } else if (today.getDate() === 6) {
         c = cats[52];
-      }else if (today.getDate() === 7) {
+      } else if (today.getDate() === 7) {
         c = cats[24];
-      }else if (today.getDate() === 8) {
+      } else if (today.getDate() === 8) {
         c = cats[37];
       } else if (today.getDate() === 10) {
         c = cats[63];
       } else if (today.getDate() === 11) {
         c = cats[12];
+      } else if (today.getDate() === 12) {
+        c = cats[77];
+      } else if (today.getDate() === 13) {
+        c = cats[4];
+      } else if (today.getDate() === 13) {
+        c = cats[72];
+      } else if (today.getDate() === 14) {
+        c = cats[16];
+      } else if (today.getDate() === 15) {
+        c = cats[62];
       }
     }
 
