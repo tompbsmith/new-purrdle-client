@@ -245,7 +245,6 @@ const Index = (props: any) => {
       }
     }
 
-    console.log(')');
 
 
 
