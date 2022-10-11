@@ -245,6 +245,8 @@ const Index = (props: any) => {
       }
     }
 
+    console.log(')');
+
 
 
     console.log(today.getMonth() + "-" + today.getDate());
