@@ -319,6 +319,12 @@ const Index = (props: any) => {
       } else if (today.getDate() === 30) {
         c = cats[18];
       }
+    } else if(today.getMonth() === 11) {
+      if (today.getDate() === 1) {
+        c = cats[56];
+      } else if (today.getDate() === 3) {
+        c = cats[3];
+      }
     }
 
 
